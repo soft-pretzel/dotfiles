@@ -1,0 +1,40 @@
+#!/usr/bin/bash
+
+modrinth="https://api.modrinth.com/v2/project"
+version="26.1.2"
+
+mods=(
+	"architectury-api"
+	"c2me-fabric"
+	"carpet"
+	"collective"
+	"disconnect-packet-fix"
+	"fabric-api"
+	"ferrite-core"
+	"forge-config-api-port"
+	"immersive-optimization"
+	"jade"
+	"krypton"
+	"lithium"
+	# "modernfix"
+	"modernfix-mvus"
+	"no-chat-reports"
+	"resourceful-config"
+	"scalablelux"
+	"servercore"
+	"servux"
+	"simple-voice-chat"
+	"spark"
+	"structure-layout-optimizer"
+	"villager-names-serilum"
+	"zfastnoise"
+)
+
+for mod in "${mods[@]}"; do
+	url=$(curl -s "$modrinth/$mod/version" | jq '[.[] | select(.game_versions[]=="'$version'" and .loaders[]=="fabric")][0] | .files[0].url')
+	if [ $url == null ]; then
+		printf "\033[0;31mNo ${version} version of ${mod}\033[0m\n"
+	else
+		wget -qnc --show-progress -P $HOME/Downloads/ ${url//\"/}
+	fi
+done
