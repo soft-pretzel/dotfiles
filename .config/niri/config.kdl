@@ -1,0 +1,85 @@
+// Startup services
+spawn-at-startup "nm-applet"
+spawn-at-startup "openrgb" "--startminimized"
+spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "syncthing"
+
+// Misc
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+hotkey-overlay {
+		skip-at-startup
+}
+
+// https://niri-wm.github.io/niri/Configuration:-Input
+input {
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        accel-speed -0.2
+    }
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+// https://niri-wm.github.io/niri/Configuration:-Outputs
+output "HDMI-A-1" {
+	mode "1920x1080@143.981"
+}
+
+// https://niri-wm.github.io/niri/Configuration:-Layout
+layout {
+    gaps 8
+    center-focused-column "never"
+		always-center-single-column
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width {
+				proportion 0.5
+		}
+
+    focus-ring {
+        off
+    }
+
+    border {
+        width 2
+        active-color "#C8C093"
+        inactive-color "#2A2A37"
+        urgent-color "#E82424"
+    }
+
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=0 y=0
+        color "#0007"
+    }
+}
+
+// https://niri-wm.github.io/niri/Configuration:-Window-Rules
+window-rule {
+		geometry-corner-radius 8
+		clip-to-geometry true
+}
+
+// https://niri-wm.github.io/niri/Configuration:-Recent-Windows
+recent-windows {
+		highlight {
+				active-color "#C8C093"
+				urgent-color "#E82424"
+				corner-radius 8
+		}
+}
+
+// Include other config files
+include "binds.kdl"
