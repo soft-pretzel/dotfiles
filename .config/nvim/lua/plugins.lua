@@ -32,7 +32,6 @@ require("telescope").setup({
 	},
 })
 require("lualine").setup()
--- require("nvim-autopairs").setup()
 require("tiny-inline-diagnostic").setup()
 vim.diagnostic.config({ virtual_text = false })
 require("mini.indentscope").setup({ symbol = "│" })
