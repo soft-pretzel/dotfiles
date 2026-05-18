@@ -1,4 +1,5 @@
 // Startup services
+spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "nm-applet"
 spawn-at-startup "openrgb" "--startminimized"
 spawn-at-startup "fcitx5" "-d"
@@ -11,10 +12,16 @@ hotkey-overlay {
 		skip-at-startup
 }
 
+// Environment variables
+environment {
+		GTK_THEME "Adwaita:dark"
+}
+
 // https://niri-wm.github.io/niri/Configuration:-Input
 input {
     touchpad {
         tap
+				dwt
         natural-scroll
     }
 
@@ -66,10 +73,33 @@ layout {
     }
 }
 
+blur {
+  passes 2
+  offset 3.0
+  noise 0.03
+  saturation 1.0
+}
+
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
 window-rule {
 		geometry-corner-radius 8
 		clip-to-geometry true
+		background-effect {
+    		blur true
+    		xray false
+  	}
+}
+
+layer-rule {
+  	match namespace="^noctalia-overview*"
+  	place-within-backdrop true
+}
+
+layer-rule {
+  	match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+  	background-effect {
+    		xray false
+  	}
 }
 
 // https://niri-wm.github.io/niri/Configuration:-Recent-Windows
@@ -79,6 +109,11 @@ recent-windows {
 				urgent-color "#E82424"
 				corner-radius 8
 		}
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
 }
 
 // Include other config files

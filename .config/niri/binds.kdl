@@ -5,32 +5,40 @@ binds {
 
 		// Applications
 		Mod+B hotkey-overlay-title="Browser" { spawn "librewolf"; }
-		Mod+E hotkey-overlay-title="File explorer" { spawn "thunar"; }
+		Mod+E hotkey-overlay-title="File explorer" { spawn "nautilus"; }
     Mod+T hotkey-overlay-title="Terminal" { spawn "kitty"; }
-		Super+Return repeat=false hotkey-overlay-title="Launcher" { spawn-sh "dms ipc call spotlight toggle"; }
     Mod+C repeat=false { close-window; }
 
-		// System
-		Super+L hotkey-overlay-title="Lock" { spawn-sh "dms ipc call lock lock"; }
-		Super+Shift+V hotkey-overlay-title="Clipboard" { spawn-sh "dms ipc call clipboard toggle"; }
-		Super+Delete hotkey-overlay-title="Power menu" { spawn-sh "dms ipc call powermenu toggle"; }
-		Super+Shift+Comma hotkey-overlay-title="Settings" { spawn-sh "dms ipc call settings toggle"; }
+		// Noctalia
+		Mod+Return repeat=false hotkey-overlay-title="Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+		Mod+S repeat=false hotkey-overlay-title="Launcher" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+		Mod+Comma hotkey-overlay-title="Settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+		Mod+V hotkey-overlay-title="Clipboard" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+		Mod+Shift+E hotkey-overlay-title="Clipboard" { spawn-sh "qs -c noctalia-shell ipc call launcher emoji"; }
+		Mod+Delete hotkey-overlay-title="Power menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+		Mod+L hotkey-overlay-title="Lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
 
-		// Volume
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-"; }
-    XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
-    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
-    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+		// Audio management
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
+    XF86AudioMicMute allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
+
+		// Media controls
+    XF86AudioPlay allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media play"; }
+    XF86AudioStop allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media pause"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
+
+		// Network and connectivity6
+		Mod+N repeat=false { spawn-sh "qs -c noctalia-shell ipc call network togglePanel"; }
+		XF86RFKill repeat=false { spawn-sh "qs -c noctalia-shell ipc call airplaneMode toggle"; }
 
 		// Brightness
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-		Super+XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
-		Super+XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
+		Mod+XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
+		Mod+XF86AudioLowerVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
 
 		// Window management
     Mod+Tab repeat=false { toggle-overview; }
@@ -84,8 +92,6 @@ binds {
 
     Mod+BracketLeft { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
-    Mod+Comma { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-column-width-back; }
