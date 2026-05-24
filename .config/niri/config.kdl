@@ -3,7 +3,7 @@ spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "nm-applet"
 spawn-at-startup "openrgb" "--startminimized"
 spawn-at-startup "fcitx5" "-d"
-spawn-at-startup "syncthing --no-browser"
+spawn-at-startup "syncthing" "--no-browser"
 
 // Misc
 prefer-no-csd
@@ -33,10 +33,6 @@ input {
 }
 
 // https://niri-wm.github.io/niri/Configuration%3A-Outputs.html
-output "HDMI-A-1" {
-	mode "1920x1080@143.981"
-}
-
 // https://niri-wm.github.io/niri/Configuration%3A-Layout.html
 layout {
     gaps 8

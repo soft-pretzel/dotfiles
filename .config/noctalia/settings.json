@@ -115,6 +115,13 @@
                     "useCustomFont": false
                 },
                 {
+                    "defaultSettings": {
+                        "customColor": "none",
+                        "showConditionIcon": true,
+                        "showTempUnit": true,
+                        "showTempValue": true,
+                        "tooltipOption": "everything"
+                    },
                     "id": "plugin:weather-indicator"
                 },
                 {
@@ -201,6 +208,16 @@
             "right": [
                 {
                     "defaultSettings": {
+                        "color": "#0064ff",
+                        "colorIcon": false,
+                        "hideOnEmpty": false,
+                        "recentColors": [
+                        ]
+                    },
+                    "id": "plugin:ds4-colors"
+                },
+                {
+                    "defaultSettings": {
                         "activeColor": "primary",
                         "camFilterRegex": "",
                         "enableToast": true,
@@ -211,9 +228,6 @@
                         "removeMargins": false
                     },
                     "id": "plugin:privacy-indicator"
-                },
-                {
-                    "id": "plugin:ds4-colors"
                 },
                 {
                     "blacklist": [
@@ -596,7 +610,7 @@
     },
     "plugins": {
         "autoUpdate": false,
-        "notifyUpdates": true
+        "notifyUpdates": false
     },
     "sessionMenu": {
         "countdownDuration": 10000,

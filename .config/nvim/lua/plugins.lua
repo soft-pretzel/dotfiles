@@ -18,6 +18,7 @@ vim.pack.add({
 	"https://github.com/mg979/vim-visual-multi",
 	"https://github.com/catgoose/nvim-colorizer.lua",
 	"https://github.com/rcarriga/nvim-notify",
+	"https://github.com/stevearc/oil.nvim",
 })
 
 -- Config
@@ -31,6 +32,7 @@ require("telescope").setup({
 		},
 	},
 })
+require("gitsigns").setup()
 require("lualine").setup()
 require("tiny-inline-diagnostic").setup()
 vim.diagnostic.config({ virtual_text = false })
@@ -40,3 +42,4 @@ require("tabout").setup()
 require("colorizer").setup()
 require("fidget").setup()
 vim.notify = require("notify")
+require("oil").setup()
