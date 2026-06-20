@@ -377,7 +377,7 @@
         }
     },
     "desktopWidgets": {
-        "enabled": false,
+        "enabled": true,
         "gridSnap": false,
         "gridSnapScale": false,
         "monitorWidgets": [
@@ -551,7 +551,7 @@
     "nightLight": {
         "autoSchedule": true,
         "dayTemp": "6000",
-        "enabled": true,
+        "enabled": false,
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -642,21 +642,21 @@
             },
             {
                 "action": "reboot",
-                "command": "",
+                "command": "hyprshutdown --post-cmd \"reboot\"",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "2"
             },
             {
                 "action": "logout",
-                "command": "niri msg action quit -s",
+                "command": "command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "3"
             },
             {
                 "action": "shutdown",
-                "command": "",
+                "command": "hyprshutdown --post-cmd \"shutdown now\"",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "4"
@@ -719,7 +719,7 @@
             },
             {
                 "enabled": true,
-                "id": "niri"
+                "id": "hyprtoolkit"
             }
         ],
         "enableUserTheming": false

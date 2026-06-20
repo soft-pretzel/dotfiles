@@ -19,7 +19,6 @@ require("mason-tool-installer").setup({
 		"ts_ls",
 		"prettier",
 		"jsonls",
-		"kdlfmt",
 		"lua_ls",
 		"stylua",
 		"rust-analyzer",
@@ -33,9 +32,8 @@ require("conform").setup({
 		bash = { "shfmt" },
 		javascript = { "prettier" },
 		json = { "prettier" },
-		kdl = { "kdlfmt " },
 		lua = { "stylua" },
-		rust = { "rustfmt" },
+		rust = { "rustfmt", "dioxus" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

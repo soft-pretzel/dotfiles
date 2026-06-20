@@ -20,7 +20,7 @@ SAVEHIST=1000
 
 # PATH
 typeset -U path PATH
-path=($HOME/.local/bin $HOME/.cargo/bin $path)
+path=($HOME/.local/bin $HOME/.cargo/bin $HOME/Android/Sdk/emulator $HOME/Android/Sdk/platform-tools /opt/android-studio/bin $path)
 export PATH
 
 # Keybindings

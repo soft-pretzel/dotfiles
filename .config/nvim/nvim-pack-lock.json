@@ -65,6 +65,10 @@
       "rev": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe",
       "src": "https://github.com/nvimdev/dashboard-nvim"
     },
+    "dioxus.nvim": {
+      "rev": "311558c09951da3c23d8feb830c48629cdb42db4",
+      "src": "https://github.com/mrxiaozhuox/dioxus.nvim"
+    },
     "fidget.nvim": {
       "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
       "src": "https://github.com/j-hui/fidget.nvim"

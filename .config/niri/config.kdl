@@ -117,3 +117,6 @@ debug {
 // Include other config files
 include "binds.kdl"
 include "noctalia.kdl"
+
+// Monique monitor configuration
+include "monitors.kdl"
