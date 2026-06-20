@@ -36,12 +36,17 @@ hl.bind("SUPER + SHIFT + left", hl.dsp.focus({ workspace = "e-1" }))
 -- https://docs.noctalia.dev/v4/getting-started/keybinds/keybinds/
 local qs = "qs -c noctalia-shell ipc call "
 hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd(qs .. "launcher toggle"))
-hl.bind("SUPER + M", hl.dsp.exec_cmd(qs .. "sessionMenu toggle"))
 hl.bind("SUPER + L", hl.dsp.exec_cmd(qs .. "lockScreen lock"))
+hl.bind("SUPER + M", hl.dsp.exec_cmd(qs .. "sessionMenu toggle"))
 hl.bind("SUPER + V", hl.dsp.exec_cmd(qs .. "launcher clipboard"))
-hl.bind("SUPER + comma", hl.dsp.exec_cmd(qs .. "settings toggle"))
 hl.bind("SUPER + W", hl.dsp.exec_cmd(qs .. "wallpaper toggle"))
+hl.bind("SUPER + comma", hl.dsp.exec_cmd(qs .. "settings toggle"))
 hl.bind("SUPER + period", hl.dsp.exec_cmd(qs .. "launcher emoji"))
+hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd(qs .. "plugin togglePanel noctalia-calculator"))
+hl.bind("SUPER + SHIFT + H", hl.dsp.exec_cmd(qs .. "plugin togglePanel hassio"))
+hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd(qs .. "plugin togglePanel monique"))
+hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd(qs .. "plugin togglePanel syncthing-status"))
+hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd(qs .. "plugin togglePanel tailscale"))
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(qs .. "volume increase"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(qs .. "volume decrease"), { locked = true, repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd(qs .. "volume muteOutput"), { locked = true })
@@ -62,6 +67,7 @@ hl.bind(
 	hl.dsp.exec_cmd(qs .. "brightness decrease"),
 	{ locked = true, repeating = true }
 )
+hl.bind("XF86RFKill", hl.dsp.exec_cmd(qs .. "airplaneMode toggle"), { locked = true })
 
 -- Passthru submap for working in VMs
 -- https://wiki.hypr.land/FAQ/#my-vm-doesnt-receive-keybinds-i-have-set-in-hyprland
@@ -69,17 +75,3 @@ hl.define_submap("passthru", function()
 	hl.bind("SUPER + Escape", hl.dsp.submap("reset"))
 end)
 hl.bind("SUPER + Escape", hl.dsp.submap("passthru"))
-
--- Switch to a submap called `resize`.
-hl.bind("SUPER + R", hl.dsp.submap("resize"))
-
--- Start a submap called "resize".
-hl.define_submap("resize", function()
-	hl.bind("right", hl.dsp.window.resize({ x = 50, y = 0, relative = true }), { repeating = true })
-	hl.bind("left", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true })
-	hl.bind("up", hl.dsp.window.resize({ x = 0, y = 50, relative = true }), { repeating = true })
-	hl.bind("down", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true })
-
-	-- Use `reset` to go back to the global submap
-	hl.bind("escape", hl.dsp.submap("reset"))
-end)
