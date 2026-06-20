@@ -1,9 +1,0 @@
-[flavor]
-light = "kanagawa"
-dark  = "kanagawa"
-
-[icon]
-prepend_dirs = [
-  { name = "Documents", text = "󰈙" },
-  # { name = "Downloads", text = "󰉍" },
-]
